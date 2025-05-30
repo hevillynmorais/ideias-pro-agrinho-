@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
-    color: #000; /* Cor do texto preta */
+    background-color: #000; /* Cor de fundo preta */
+    color: #fff; /* Cor do texto branca */
 }
 
 /* Cabeçalho */
@@ -72,7 +72,7 @@ button:hover {
 }
 
 .profile {
-    background-color: #fff;
+    background-color: #222; /* Fundo escuro para o perfil */
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -90,7 +90,7 @@ button:hover {
 }
 
 #question-container {
-    background-color: #fff;
+    background-color: #222; /* Fundo escuro para o questionário */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
