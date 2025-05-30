@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festejando a Conexão da Cidade e do Campo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Conexão Cidade e Campo</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0);" onclick="showSection('home')">Início</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('profile')">Perfil</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('game')">Jogo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="home" class="section">
+        <section class="intro">
+            <div class="intro-content">
+                <h2>Seja bem-vindo(a) à nossa festa!</h2>
+                <p>Aqui celebramos a união entre a cidade e o campo, em uma experiência de aprendizado e diversão.</p>
+                <button onclick="showSection('game')">Começar o Jogo</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="profile" class="section" style="display: none;">
+        <section class="profile">
+            <h2>Atualize seu Perfil</h2>
+            <form id="profile-form" onsubmit="saveProfile(event)">
+                <div class="input-field">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="input-field">
+                    <label for="foto">Foto de Perfil:</label>
+                    <input type="file" id="foto" name="foto" accept="image/*" required>
+                </div>
+                <button type="submit">Salvar</button>
+            </form>
+            <div id="profile-output">
+                <!-- Exibe foto e nome após salvar -->
+            </div>
+        </section>
+    </div>
+
+    <div id="game" class="section" style="display: none;">
+        <section class="game">
+            <h2>Responda as Perguntas e Ganhe Pontos!</h2>
+            <div id="question-container">
+                <p id="question">Carregando...</p>
+                <div id="options-container">
+                    <!-- Opções de resposta serão inseridas aqui -->
+                </div>
+            </div>
+            <p id="score">Pontos: 0</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Conexão Cidade e Campo - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
