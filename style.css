@@ -8,7 +8,7 @@
 body {
     font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
     background-color: #0d1117; /* Cor de fundo escura, um pouco mais suave que puro preto */
-    color: #e6edf3; /* Cor do texto branco acinzentado para melhor contraste */
+    color: #e6edf3; /* Cor do texto branco acincentado para melhor contraste */
     line-height: 1.6; /* Melhor espaçamento entre linhas */
     display: flex;
     flex-direction: column;
@@ -210,7 +210,8 @@ button:active { /* Efeito de clique */
 .input-field input[type="text"],
 .input-field input[type="file"] {
     padding: 1rem; /* Mais padding */
-    width: calc(100% - 20px); /* Ajusta a largura com o padding */
+    /* Ajuste para calc(100% - 2rem) para corresponder ao padding de 1rem em cada lado */
+    width: calc(100% - 2rem);
     border: 1px solid #4a5666; /* Borda mais discreta */
     border-radius: 6px;
     background-color: #0d1117; /* Fundo do input */
@@ -244,7 +245,11 @@ button:active { /* Efeito de clique */
     padding: 0.8rem 1.2rem;
     outline: none;
     white-space: nowrap;
-    -webkit-user-select: none;
+    /* Correção para user-select para compatibilidade entre navegadores */
+    -webkit-user-select: none; /* Para navegadores baseados em WebKit */
+    -moz-user-select: none;    /* Para navegadores baseados em Gecko (Firefox) */
+    -ms-user-select: none;     /* Para Internet Explorer/Edge legados */
+    user-select: none;         /* Versão padrão (para navegadores modernos) */
     cursor: pointer;
     font-weight: 700;
     font-size: 10pt;
