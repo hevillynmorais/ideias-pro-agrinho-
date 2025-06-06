@@ -19,7 +19,7 @@ body {
 /* Container principal para centralizar o conteúdo */
 main {
     flex-grow: 1; /* Permite que o main ocupe o espaço restante */
-    max-width: 1200px; /* Largura máxima para o conteúdo principal */
+    max-width: 1400px; /* Increased max-width for more space */
     margin: 0 auto; /* Centraliza o main */
     padding: 20px; /* Espaçamento interno */
     width: 100%; /* Ocupa 100% da largura disponível dentro do max-width */
@@ -35,12 +35,14 @@ header {
     position: sticky; /* Cabeçalho fixo no topo */
     top: 0;
     z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    border-bottom: 3px solid #4CAF50; /* Add a subtle green line */
 }
 
 header .logo h1 {
-    font-size: 2.8rem; /* Tamanho da fonte maior */
+    font-size: 3.2rem; /* Tamanho da fonte maior */
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra no texto do logo */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra mais forte no texto do logo */
+    letter-spacing: 1px; /* Subtle letter spacing */
 }
 
 nav ul {
@@ -51,29 +53,30 @@ nav ul {
 
 nav ul li {
     display: inline-block; /* Altera para inline-block para melhor controle de margem */
-    margin: 0 20px; /* Margem maior entre os itens de navegação */
+    margin: 0 25px; /* Margem maior entre os itens de navegação */
     position: relative; /* Para o efeito de sublinhado */
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1.2rem; /* Fonte um pouco maior */
+    font-size: 1.3rem; /* Fonte um pouco maior */
     font-weight: 500; /* Peso da fonte */
     transition: color 0.3s ease, transform 0.3s ease;
-    padding-bottom: 5px; /* Espaço para o sublinhado */
+    padding-bottom: 8px; /* Mais espaço para o sublinhado */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for nav links */
 }
 
 nav ul li a:hover {
     color: #e0f2f1; /* Cor mais clara no hover */
-    transform: translateY(-2px); /* Pequeno efeito de elevação */
+    transform: translateY(-3px); /* Pequeno efeito de elevação */
 }
 
 nav ul li a::after { /* Efeito de sublinhado */
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 3px; /* Thicker underline */
     background: #e0f2f1;
     left: 0;
     bottom: 0;
@@ -87,12 +90,13 @@ nav ul li a:hover::after {
 /* Seções */
 .section {
     display: none; /* Esconde todas as seções por padrão */
-    padding: 40px; /* Espaçamento interno padrão para as seções */
-    margin-bottom: 30px; /* Espaçamento entre as seções */
+    padding: 50px; /* Increased padding for sections */
+    margin-bottom: 40px; /* Increased spacing between sections */
     background-color: #161b22; /* Fundo ligeiramente mais claro que o body */
-    border-radius: 12px; /* Cantos mais arredondados */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Sombra mais pronunciada */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
     animation: fadeIn 0.8s ease-out; /* Animação ao mostrar a seção */
+    border: 1px solid rgba(76, 175, 80, 0.3); /* Subtle border for sections */
 }
 
 #home {
@@ -100,17 +104,17 @@ nav ul li a:hover::after {
 }
 
 .intro {
-    background-image: url('https://via.placeholder.com/1200x600/1f4037/e0f2f1?text=Conexao+Cidade+e+Campo'); /* Placeholder mais genérico */
+    background-image: url('https://via.placeholder.com/1400x700/1f4037/e0f2f1?text=Conexao+Cidade+e+Campo'); /* Larger placeholder */
     background-size: cover;
     background-position: center;
-    min-height: 500px; /* Altura mínima para a seção introdutória */
+    min-height: 600px; /* Increased min-height */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-    overflow: hidden; /* Garante que o pseudo-elemento não vaze */
-    padding: 6rem 2rem; /* Aumenta o padding */
+    overflow: hidden;
+    padding: 8rem 3rem; /* Increased padding */
 }
 
 .intro::before { /* Overlay para melhorar a legibilidade do texto */
@@ -120,118 +124,185 @@ nav ul li a:hover::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Escurece a imagem de fundo */
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
     z-index: 1;
 }
 
 .intro-content {
     position: relative;
     z-index: 2; /* Garante que o conteúdo fique acima do overlay */
-    max-width: 800px;
-    padding: 2rem;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o conteúdo */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 900px; /* Wider content area */
+    padding: 3.5rem; /* Increased padding */
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background for content */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+    border: 1px solid rgba(167, 217, 185, 0.3); /* Subtle border */
 }
 
 .intro-content h2 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.5rem; /* Larger heading */
+    margin-bottom: 1.8rem;
     color: #a7d9b9; /* Cor de destaque */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .intro-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
+    font-size: 1.5rem; /* Slightly larger text for impact */
+    margin-bottom: 3rem; /* More space before features */
     color: #e6edf3;
 }
+
+.intro-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between feature items */
+    margin-top: 3.5rem; /* Space from the main intro text */
+    margin-bottom: 3.5rem; /* Space before the button */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+.feature-item {
+    background-color: rgba(22, 27, 34, 0.95); /* Slightly more opaque dark background */
+    padding: 2.5rem; /* More padding */
+    border-radius: 15px; /* More rounded */
+    width: 300px; /* Slightly larger fixed width */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+    border: 1px solid #1f4037; /* Subtle border */
+}
+
+.feature-item:hover {
+    transform: translateY(-12px) scale(1.03); /* Lift and slightly enlarge on hover */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+    background-color: rgba(34, 44, 56, 0.98); /* Slightly lighter on hover */
+}
+
+.feature-item .icon {
+    font-size: 4.5rem; /* Larger icon size */
+    margin-bottom: 1.2rem;
+    display: block;
+    color: #a7d9b9; /* Highlight color for icons */
+    text-shadow: 0 0 20px rgba(167, 217, 185, 0.7); /* Stronger glow effect for icons */
+}
+
+.feature-item h3 {
+    font-size: 1.6rem;
+    color: #e6edf3;
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #c9d1d9;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
 
 /* Estilos de Botão Geral */
 button {
     background-color: #4CAF50; /* Verde vibrante */
     color: white;
     border: none;
-    padding: 1.2rem 2.5rem; /* Mais padding */
-    font-size: 1.3rem;
+    padding: 1.4rem 2.8rem; /* More padding */
+    font-size: 1.4rem; /* Larger font */
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px; /* Cantos mais arredondados */
+    border-radius: 10px; /* More rounded corners */
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    letter-spacing: 0.5px; /* Pequeno espaçamento entre letras */
+    letter-spacing: 0.8px; /* Increased letter spacing */
     text-transform: uppercase; /* Texto em maiúsculas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
     background-color: #45a049;
-    transform: translateY(-3px); /* Efeito de "levitação" no hover */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px); /* Increased "levitation" effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 button:active { /* Efeito de clique */
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
+/* Novo botão para navegação sequencial */
+.next-step-button {
+    background-color: #009688; /* Another vibrant color for distinction */
+    margin-top: 3rem; /* Space from content above */
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.next-step-button:hover {
+    background-color: #00796b;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
 
 /* Seção de Perfil */
 .profile {
-    padding: 3rem; /* Mais padding */
-    text-align: center;
+    background: linear-gradient(135deg, #1f4037, #0d1117); /* Gentle gradient background */
+    border: 1px solid #4CAF50; /* Add a subtle border */
+    padding: 4rem 3rem; /* More generous padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; /* Space between form and output */
+    border-radius: 15px; /* Keep consistent with sections */
 }
 
 .profile h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #a7d9b9;
+    font-size: 3rem; /* Larger heading */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Shadow for heading */
+    color: #e0f2f1; /* Lighter color for heading */
 }
 
 .profile-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #222c38; /* Fundo para o formulário */
-    padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra interna */
+    background-color: #222c38; /* Keep existing background */
+    padding: 3rem; /* More padding inside the form */
+    border-radius: 15px; /* More rounded corners */
+    border: 1px solid #4a5666; /* Border for form */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Stronger outer shadow */
 }
 
 .input-field {
-    margin-bottom: 1.5rem;
-    text-align: left; /* Alinha labels à esquerda */
+    position: relative; /* For potential future icon/feedback */
+    margin-bottom: 2rem; /* More space between fields */
 }
 
 .input-field label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Larger label font */
+    font-weight: 600; /* Bolder labels */
     color: #c9d1d9;
+    margin-bottom: 0.8rem; /* More space below label */
 }
 
 .input-field input[type="text"],
 .input-field input[type="file"] {
-    padding: 1rem; /* Mais padding */
-    /* Ajuste para calc(100% - 2rem) para corresponder ao padding de 1rem em cada lado */
-    width: calc(100% - 2rem);
-    border: 1px solid #4a5666; /* Borda mais discreta */
-    border-radius: 6px;
-    background-color: #0d1117; /* Fundo do input */
+    padding: 1.2rem; /* More padding for inputs */
+    font-size: 1.1rem; /* Larger font in inputs */
+    border: 2px solid #4a5666; /* Thicker border */
+    background-color: #0d1117;
     color: #e6edf3;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px; /* More rounded input fields */
 }
 
 .input-field input[type="text"]:focus,
 .input-field input[type="file"]:focus {
-    border-color: #a7d9b9; /* Borda de foco */
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(167, 217, 185, 0.3); /* Sombra de foco */
+    border-color: #a7d9b9;
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 4px rgba(167, 217, 185, 0.4); /* Larger glow */
 }
 
-/* Estilo para o input de arquivo (personalizado) */
+/* Custom file input button styling adjustments */
 .input-field input[type="file"] {
     cursor: pointer;
 }
-/* Esconder o input de arquivo padrão e estilizar um label */
 .input-field input[type="file"]::-webkit-file-upload-button {
     visibility: hidden;
 }
@@ -241,18 +312,18 @@ button:active { /* Efeito de clique */
     background: #009688;
     color: #fff;
     border: 1px solid #00796b;
-    border-radius: 4px;
-    padding: 0.8rem 1.2rem;
+    border-radius: 6px; /* Slightly more rounded */
+    padding: 1rem 1.5rem; /* More padding */
     outline: none;
     white-space: nowrap;
-    /* Correção para user-select para compatibilidade entre navegadores */
-    -webkit-user-select: none; /* Para navegadores baseados em WebKit */
-    -moz-user-select: none;    /* Para navegadores baseados em Gecko (Firefox) */
-    -ms-user-select: none;     /* Para Internet Explorer/Edge legados */
-    user-select: none;         /* Versão padrão (para navegadores modernos) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 10pt;
+    font-weight: bold; /* Bolder text */
+    font-size: 11pt; /* Slightly larger font */
+    letter-spacing: 0.5px;
     transition: background-color 0.3s ease;
 }
 .input-field input[type="file"]:hover::before {
@@ -260,161 +331,358 @@ button:active { /* Efeito de clique */
 }
 
 #profile-output {
-    margin-top: 2.5rem;
-    padding: 1.5rem;
-    background-color: #222c38;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
+    margin-top: 2.5rem; /* Ensure consistent spacing */
+    padding: 2.5rem; /* More internal padding */
+    background: linear-gradient(45deg, #161b22, #222c38); /* Subtle gradient for output */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    border: 1px solid #4a5666; /* Subtle border */
+    width: 100%; /* Ensure it takes full width within its container */
+    max-width: 500px; /* Match form max-width */
 }
 
 #profile-output h3 {
-    color: #a7d9b9;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 2.2rem; /* Larger output heading */
+    color: #e0f2f1;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-.profile-img { /* Estilo para a imagem de perfil no JS */
-    width: 120px;
-    height: 120px;
-    border-radius: 50%; /* Imagem redonda */
-    object-fit: cover; /* Garante que a imagem preencha o círculo */
-    border: 4px solid #4CAF50; /* Borda verde */
-    margin-bottom: 1rem;
-    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5); /* Sombra verde */
+.profile-img {
+    width: 150px; /* Larger profile image */
+    height: 150px;
+    border: 5px solid #4CAF50; /* Thicker border */
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.7); /* Stronger glow */
+    margin-bottom: 1.5rem; /* More space below image */
 }
 
 #profile-output p {
-    font-size: 1.2rem;
+    font-size: 1.3rem; /* Larger text for profile info */
     color: #c9d1d9;
 }
 
-#profile-output p strong {
+
+/* NEW SECTION: Stories */
+.stories {
+    text-align: center;
+    padding: 4rem; /* More padding */
+    background: linear-gradient(45deg, #0d1117, #1f4037); /* Gradient background */
+    border: 1px solid #a7d9b9; /* Border with highlight color */
+}
+
+.stories h2 {
+    font-size: 3rem;
     color: #a7d9b9;
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.story-carousel {
+    position: relative;
+    overflow: hidden; /* Hide overflowing stories */
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto; /* Center with space below */
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    background-color: #222c38;
+    padding: 2.5rem; /* Inner padding */
+    border: 1px solid rgba(74, 86, 102, 0.5); /* Subtle border */
+}
+
+.story-item {
+    display: none; /* Hidden by default, JS will show active one */
+    animation: slideIn 0.8s ease-out forwards; /* Animation for story transition */
+    text-align: center;
+}
+
+.story-item.active {
+    display: block; /* Show the active story */
+}
+
+.story-item h3 {
+    font-size: 2.2rem;
+    color: #e0f2f1;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.story-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #009688; /* Green border for images */
+}
+
+.story-item p {
+    font-size: 1.15rem;
+    color: #c9d1d9;
+    line-height: 1.8;
+}
+
+.carousel-nav {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carousel-nav .nav-button {
+    background-color: #607d8b; /* Grayish blue for nav buttons */
+    color: white;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.5rem;
+    border-radius: 50%; /* Round buttons */
+    width: 60px; /* Fixed width for roundness */
+    height: 60px; /* Fixed height for roundness */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav .nav-button:hover {
+    background-color: #546e7a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 
 /* Seção do Jogo */
 .game {
     text-align: center;
-    padding: 3rem;
+    padding: 4rem; /* More padding */
 }
 
 .game h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 3rem; /* Larger heading */
+    margin-bottom: 2.5rem;
     color: #a7d9b9;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #question-container {
-    padding: 2.5rem;
-    margin-bottom: 2rem;
+    padding: 3rem; /* More padding */
+    margin-bottom: 2.5rem;
     background-color: #222c38;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    border: 1px solid rgba(74, 86, 102, 0.5);
 }
 
 #question {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+    font-size: 2rem; /* Larger question font */
+    margin-bottom: 2.5rem;
     color: #e6edf3;
-    min-height: 80px; /* Garante espaço para a pergunta */
+    min-height: 90px; /* Ensure space for the question */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-weight: 500; /* Slightly bolder */
 }
 
 #options-container {
     display: flex;
     flex-wrap: wrap; /* Permite que os botões quebrem a linha */
     justify-content: center;
-    gap: 15px; /* Espaçamento entre os botões */
+    gap: 20px; /* Increased spacing between buttons */
 }
 
 #options-container button {
     background-color: #009688; /* Verde-água */
     color: white;
-    padding: 1.2rem 2rem;
+    padding: 1.4rem 2.2rem; /* More padding */
     margin: 0; /* Remove a margem individual para usar o gap */
-    border-radius: 8px;
-    flex: 1 1 calc(50% - 30px); /* Ocupa metade da largura com espaçamento */
-    max-width: 300px; /* Limita a largura máxima dos botões */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    font-size: 1.1rem;
+    border-radius: 10px; /* More rounded */
+    flex: 1 1 calc(50% - 40px); /* Adjust flex basis for increased gap */
+    max-width: 350px; /* Increased max-width for buttons */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    font-size: 1.2rem; /* Slightly larger font */
+    font-weight: 500;
 }
 
 #options-container button:hover {
     background-color: #00796b;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px); /* Increased lift */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 #score {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Larger score font */
     font-weight: bold;
     color: #a7d9b9;
-    margin-top: 2rem;
-    padding: 1rem;
+    margin-top: 2.5rem;
+    padding: 1.2rem 2rem; /* More padding */
     background-color: #1f4037;
-    border-radius: 8px;
-    display: inline-block; /* Ajusta o fundo ao redor do texto */
+    border-radius: 10px; /* More rounded */
+    display: inline-block;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
 }
 
 /* Rodapé */
 footer {
     background-color: #161b22;
     color: #c9d1d9;
-    padding: 1.5rem;
+    padding: 1.8rem; /* More padding */
     text-align: center;
     margin-top: auto; /* Empurra o rodapé para o final da página */
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
+    border-top: 3px solid #4CAF50; /* Add a subtle green line */
 }
 
 footer p {
-    font-size: 0.9rem;
+    font-size: 1rem; /* Slightly larger font */
 }
 
 /* Animações */
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
+    0% { opacity: 0; transform: translateY(30px); } /* Stronger initial displacement */
     100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+
 /* Responsividade */
+@media (max-width: 992px) { /* New breakpoint for larger tablets */
+    main {
+        padding: 15px;
+    }
+    .section {
+        padding: 40px;
+    }
+    .intro-content h2 {
+        font-size: 3rem;
+    }
+    .intro-content p {
+        font-size: 1.3rem;
+    }
+    .intro-features {
+        gap: 20px;
+    }
+    .feature-item {
+        width: 250px;
+    }
+    .stories h2, .profile h2, .game h2 {
+        font-size: 2.5rem;
+    }
+    .story-item h3 {
+        font-size: 2rem;
+    }
+    .story-item p {
+        font-size: 1.1rem;
+    }
+    #question {
+        font-size: 1.8rem;
+    }
+    #options-container button {
+        flex: 1 1 calc(50% - 30px);
+        max-width: 300px;
+        font-size: 1.1rem;
+    }
+}
+
 @media (max-width: 768px) {
     header .logo h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     nav ul li {
-        margin: 0 10px;
+        margin: 0 15px;
     }
 
     nav ul li a {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .intro-content h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
     .intro-content p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     button {
         padding: 1rem 2rem;
+        font-size: 1.2rem;
+    }
+
+    .next-step-button {
         font-size: 1.1rem;
+        padding: 1rem 2rem;
     }
 
     .section {
-        padding: 20px;
+        padding: 30px;
     }
 
+    .intro-features {
+        flex-direction: column; /* Stack features vertically on small screens */
+        align-items: center;
+        gap: 20px;
+    }
+    .feature-item {
+        width: 90%; /* Occupy more width on smaller screens */
+        max-width: 350px; /* Prevent it from getting too wide */
+    }
+
+    .profile h2, .game h2, .stories h2 {
+        font-size: 2.2rem;
+    }
+    .profile-form {
+        padding: 2.5rem;
+    }
+    .input-field label {
+        font-size: 1.1rem;
+    }
+    .input-field input[type="text"],
+    .input-field input[type="file"] {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    #profile-output {
+        padding: 2rem;
+    }
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+    #profile-output p {
+        font-size: 1.1rem;
+    }
+
+    .story-carousel {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .story-item h3 {
+        font-size: 1.8rem;
+    }
+    .story-item p {
+        font-size: 1rem;
+    }
+    .carousel-nav .nav-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    #question {
+        font-size: 1.6rem;
+    }
     #options-container button {
-        flex: 1 1 100%; /* Botões de opção ocupam a largura total em telas menores */
-        max-width: 400px; /* Limita a largura em telas menores */
+        flex: 1 1 100%; /* Buttons take full width on smaller phones */
+        max-width: 350px; /* Cap width for very narrow screens */
+    }
+    #score {
+        font-size: 1.8rem;
     }
 }
 
@@ -423,7 +691,7 @@ footer p {
         padding: 1rem 0;
     }
     header .logo h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     nav ul {
         display: flex;
@@ -431,30 +699,40 @@ footer p {
         align-items: center;
     }
     nav ul li {
-        margin: 10px 0;
+        margin: 8px 0;
+    }
+    nav ul li a {
+        font-size: 1rem;
     }
     .intro {
-        min-height: 400px;
-        padding: 4rem 1rem;
+        min-height: 350px;
+        padding: 3rem 1rem;
     }
     .intro-content h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     .intro-content p {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
     button {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
+    .next-step-button {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+    }
+    .section {
+        padding: 20px;
+    }
     .profile-form {
         padding: 1.5rem;
     }
-    .profile h2, .game h2 {
-        font-size: 2rem;
+    .profile h2, .game h2, .stories h2 {
+        font-size: 1.8rem;
     }
     #question {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
     #score {
         font-size: 1.5rem;
