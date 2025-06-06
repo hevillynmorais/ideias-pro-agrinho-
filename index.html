@@ -18,12 +18,14 @@
             <ul>
                 <li><a href="javascript:void(0);" onclick="showSection('home')">Início</a></li>
                 <li><a href="javascript:void(0);" onclick="showSection('profile')">Perfil</a></li>
-                <li><a href="javascript:void(0);" onclick="showSection('stories')">Histórias</a></li> <li><a href="javascript:void(0);" onclick="showSection('game')">Jogo</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('stories')">Histórias</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('game')">Jogo</a></li>
             </ul>
         </nav>
     </header>
 
-    <main> <div id="home" class="section">
+    <main>
+        <div id="home" class="section">
             <section class="intro">
                 <div class="intro-content">
                     <h2>Seja bem-vindo(a) à nossa festa!</h2>
@@ -42,7 +44,8 @@
                             <p>Entenda como a cidade depende do campo e o campo prospera com a cidade.</p>
                         </div>
                     </div>
-                    <button onclick="showSection('profile')">Começar a Jornada!</button> </div>
+                    <button onclick="showSection('profile')">Começar a Jornada!</button>
+                </div>
             </section>
         </div>
 
@@ -58,11 +61,16 @@
                         <label for="foto">Foto de Perfil:</label>
                         <input type="file" id="foto" name="foto" accept="image/*" required>
                     </div>
+                    <div class="privacy-consent">
+                        <input type="checkbox" id="privacy-agree" required>
+                        <label for="privacy-agree">Eu concordo com os <a href="privacy-policy.html" target="_blank">Termos de Privacidade</a>.</label>
+                    </div>
                     <button type="submit">Salvar Perfil</button>
                 </form>
                 <div id="profile-output">
-                </div>
-                <button class="next-step-button" onclick="showSection('stories')">Próximo: Descubra as Histórias</button> </section>
+                    </div>
+                <button class="next-step-button" onclick="showSection('stories')">Próximo: Descubra as Histórias</button>
+            </section>
         </div>
 
         <div id="stories" class="section" style="display: none;">
@@ -84,12 +92,13 @@
                         <img src="https://via.placeholder.com/600x300/8bc34a/ffffff?text=Artesanato+Rural" alt="Artesanato Rural">
                         <p>Peças únicas feitas à mão no interior do país, com técnicas passadas de geração em geração, encontram no mercado urbano e nas plataformas digitais a vitrine para alcançar consumidores em todo o mundo. A tradição encontra a modernidade!</p>
                     </div>
-                    </div>
+                </div>
                 <div class="carousel-nav">
                     <button class="nav-button prev" onclick="changeStory(-1)">&#10094;</button>
                     <button class="nav-button next" onclick="changeStory(1)">&#10095;</button>
                 </div>
-                <button class="next-step-button" onclick="showSection('game')">Pronto para o Jogo?</button> </section>
+                <button class="next-step-button" onclick="showSection('game')">Pronto para o Jogo?</button>
+            </section>
         </div>
 
         <div id="game" class="section" style="display: none;">
