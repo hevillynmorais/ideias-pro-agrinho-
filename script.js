@@ -6,6 +6,12 @@ let score = 0;
 let currentStoryIndex = 0;
 let storyItems; // Will be initialized when DOM is ready
 
+// Get references to game elements (updated to use 'let' as they might be reassigned)
+// These need to be declared globally or re-queried after game section redraws
+let questionElement;
+let optionsContainer;
+let scoreElement;
+
 // Lógica para navegação entre seções
 function showSection(sectionId) {
     // Esconde todas as seções
@@ -22,12 +28,21 @@ function showSection(sectionId) {
 
     // Lógica específica para cada seção
     if (sectionId === 'game') {
+        // Ensure game elements are correctly referenced before loading a question
+        questionElement = document.getElementById('question');
+        optionsContainer = document.getElementById('options-container');
+        scoreElement = document.getElementById('score');
+
         // Only load question if starting a new game or if coming back to game after restarting
-        if (currentQuestionIndex === 0 && document.getElementById('question').textContent === 'Carregando...') {
+        // We check if questionElement exists and its content is the initial loading text
+        if (questionElement && questionElement.textContent === 'Carregando...') {
             loadQuestion();
         } else if (currentQuestionIndex < questions.length) {
             // If the game was in progress, ensure the current question is shown
             loadQuestion();
+        } else {
+            // If game ended and user navigates back to game section, show end game state
+            endGame();
         }
     } else if (sectionId === 'stories') {
         // Initialize story items and show the first one when entering stories section
@@ -35,6 +50,36 @@ function showSection(sectionId) {
         if (storyItems.length > 0) {
             currentStoryIndex = 0; // Always start from the first story
             showStory(currentStoryIndex);
+        }
+    } else if (sectionId === 'profile') {
+        // When navigating to profile, try to load saved user name
+        const savedNome = localStorage.getItem('nomeUsuario');
+        const profileOutput = document.getElementById('profile-output');
+        if (savedNome) {
+            document.getElementById('nome').value = savedNome;
+            // You might want to save and display more profile info here if you add more fields
+            const savedEmail = localStorage.getItem('emailUsuario');
+            const savedLocation = localStorage.getItem('locationUsuario');
+            const savedBio = localStorage.getItem('bioUsuario');
+
+
+            profileOutput.innerHTML = `
+                <h3>Perfil Salvo:</h3>
+                <p>Nome: <strong>${savedNome}</strong></p>
+                ${savedEmail ? `<p>Email: <strong>${savedEmail}</strong></p>` : ''}
+                ${savedLocation ? `<p>Localização: <strong>${savedLocation}</strong></p>` : ''}
+                ${savedBio ? `<p>Biografia: <strong>${savedBio}</strong></p>` : ''}
+                <p>Selecione uma nova foto para atualizar.</p>
+            `;
+            // If you saved photo as base64, you would load it here too
+            const savedPhoto = localStorage.getItem('fotoPerfilBase64');
+            if (savedPhoto) {
+                const imgElement = document.createElement('img');
+                imgElement.src = savedPhoto;
+                imgElement.alt = "Foto de perfil";
+                imgElement.classList.add('profile-img');
+                profileOutput.prepend(imgElement); // Add image before other content
+            }
         }
     }
 }
@@ -45,12 +90,21 @@ function saveProfile(event) {
 
     const nomeInput = document.getElementById('nome');
     const fotoInput = document.getElementById('foto');
+    const privacyCheckbox = document.getElementById('privacy-agree');
     const profileOutput = document.getElementById('profile-output');
+
+    // Get potential new fields
+    const emailInput = document.getElementById('email');
+    const locationInput = document.getElementById('location');
+    const bioInput = document.getElementById('bio');
 
     const nome = nomeInput.value;
     const foto = fotoInput.files[0]; // Pega o primeiro arquivo selecionado
+    const email = emailInput ? emailInput.value : ''; // Check if exists
+    const location = locationInput ? locationInput.value : ''; // Check if exists
+    const bio = bioInput ? bioInput.value : ''; // Check if exists
 
-    // Valida se o nome e a foto foram preenchidos
+    // Valida se o nome, foto e privacidade foram preenchidos
     if (!nome) {
         alert('Por favor, preencha seu nome.');
         return;
@@ -59,24 +113,40 @@ function saveProfile(event) {
         alert('Por favor, selecione uma foto de perfil.');
         return;
     }
+    if (!privacyCheckbox.checked) {
+        alert('Você deve concordar com os Termos de Privacidade para salvar seu perfil.');
+        return;
+    }
 
     // Exibe nome e foto no perfil
     const reader = new FileReader();
 
     reader.onload = function(e) {
+        const photoBase64 = e.target.result; // Get Base64 string of the image
+
         profileOutput.innerHTML = `
             <h3>Perfil Salvo:</h3>
-            <img src="${e.target.result}" alt="Foto de perfil" class="profile-img">
+            <img src="${photoBase64}" alt="Foto de perfil" class="profile-img">
             <p>Nome: <strong>${nome}</strong></p>
+            ${email ? `<p>Email: <strong>${email}</strong></p>` : ''}
+            ${location ? `<p>Localização: <strong>${location}</strong></p>` : ''}
+            ${bio ? `<p>Biografia: <strong>${bio}</strong></p>` : ''}
         `;
+        // You could add more profile fields here if you add them to the HTML form
+
+        // Salva os dados no LocalStorage para persistência
+        localStorage.setItem('nomeUsuario', nome);
+        localStorage.setItem('fotoPerfilBase64', photoBase64); // Save photo as Base64
+        localStorage.setItem('emailUsuario', email); // Save new fields
+        localStorage.setItem('locationUsuario', location);
+        localStorage.setItem('bioUsuario', bio);
+
+        alert('Perfil salvo com sucesso!');
     };
 
     if (foto) {
         reader.readAsDataURL(foto); // Lê o conteúdo do arquivo como URL de dados
     }
-
-    // Salva o nome no LocalStorage para persistência
-    localStorage.setItem('nomeUsuario', nome);
 }
 
 // Lógica do Jogo de Perguntas
@@ -134,11 +204,6 @@ const questions = [
     }
 ];
 
-// Get references to game elements (updated to use 'let' as they might be reassigned)
-let questionElement = document.getElementById('question');
-let optionsContainer = document.getElementById('options-container');
-let scoreElement = document.getElementById('score');
-
 function loadQuestion() {
     if (currentQuestionIndex >= questions.length) {
         endGame();
@@ -189,7 +254,7 @@ function endGame() {
         <button onclick="restartGame()">Jogar Novamente</button>
         <button onclick="showSection('home')">Voltar ao Início</button>
     `;
-    localStorage.setItem('pontuacaoFinal', score);
+    localStorage.setItem('pontuacaoFinal', score); // Save final score
 }
 
 function restartGame() {
@@ -246,14 +311,11 @@ document.addEventListener('DOMContentLoaded', () => {
     showSection('home');
 
     // Opcional: Carregar o nome do usuário se já estiver salvo
+    // The logic to load other profile info is now inside showSection('profile')
+    // when that section is actually visited.
     const savedNome = localStorage.getItem('nomeUsuario');
     if (savedNome) {
+        // Just setting the input value for convenience, actual display happens in showSection('profile')
         document.getElementById('nome').value = savedNome;
-        const profileOutput = document.getElementById('profile-output');
-        profileOutput.innerHTML = `
-            <h3>Perfil Salvo:</h3>
-            <p>Nome: <strong>${savedNome}</strong></p>
-            <p>Selecione uma nova foto para atualizar.</p>
-        `;
     }
 });
