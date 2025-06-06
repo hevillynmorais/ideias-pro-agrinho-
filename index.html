@@ -18,51 +18,92 @@
             <ul>
                 <li><a href="javascript:void(0);" onclick="showSection('home')">Início</a></li>
                 <li><a href="javascript:void(0);" onclick="showSection('profile')">Perfil</a></li>
-                <li><a href="javascript:void(0);" onclick="showSection('game')">Jogo</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('stories')">Histórias</a></li> <li><a href="javascript:void(0);" onclick="showSection('game')">Jogo</a></li>
             </ul>
         </nav>
     </header>
 
-    <div id="home" class="section">
-        <section class="intro">
-            <div class="intro-content">
-                <h2>Seja bem-vindo(a) à nossa festa!</h2>
-                <p>Aqui celebramos a união entre a cidade e o campo, em uma experiência de aprendizado e diversão.</p>
-                <button onclick="showSection('game')">Começar o Jogo</button>
-            </div>
-        </section>
-    </div>
-
-    <div id="profile" class="section" style="display: none;">
-        <section class="profile">
-            <h2>Atualize seu Perfil</h2>
-            <form id="profile-form" onsubmit="saveProfile(event)">
-                <div class="input-field">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="input-field">
-                    <label for="foto">Foto de Perfil:</label>
-                    <input type="file" id="foto" name="foto" accept="image/*" required>
-                </div>
-                <button type="submit">Salvar</button>
-            </form>
-            <div id="profile-output">
-                </div>
-        </section>
-    </div>
-
-    <div id="game" class="section" style="display: none;">
-        <section class="game">
-            <h2>Responda as Perguntas e Ganhe Pontos!</h2>
-            <div id="question-container">
-                <p id="question">Carregando...</p>
-                <div id="options-container">
+    <main> <div id="home" class="section">
+            <section class="intro">
+                <div class="intro-content">
+                    <h2>Seja bem-vindo(a) à nossa festa!</h2>
+                    <p>Aqui celebramos a união entre a **cidade** e o **campo**, em uma experiência de aprendizado e diversão. Explore como esses dois mundos se conectam e contribuem mutuamente!</p>
+                    <div class="intro-features">
+                        <div class="feature-item">
+                            <span class="icon">&#127961;</span> <h3>Vida Urbana</h3>
+                            <p>Descubra a energia, a cultura e a inovação dos centros urbanos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#127807;</span> <h3>Essência Rural</h3>
+                            <p>Conheça a riqueza da agricultura, a tranquilidade da natureza e a produção de alimentos.</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="icon">&#128176;</span> <h3>Conexão Mútua</h3>
+                            <p>Entenda como a cidade depende do campo e o campo prospera com a cidade.</p>
+                        </div>
                     </div>
-            </div>
-            <p id="score">Pontos: 0</p>
-        </section>
-    </div>
+                    <button onclick="showSection('profile')">Começar a Jornada!</button> </div>
+            </section>
+        </div>
+
+        <div id="profile" class="section" style="display: none;">
+            <section class="profile">
+                <h2>Atualize seu Perfil</h2>
+                <form id="profile-form" onsubmit="saveProfile(event)">
+                    <div class="input-field">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="foto">Foto de Perfil:</label>
+                        <input type="file" id="foto" name="foto" accept="image/*" required>
+                    </div>
+                    <button type="submit">Salvar Perfil</button>
+                </form>
+                <div id="profile-output">
+                </div>
+                <button class="next-step-button" onclick="showSection('stories')">Próximo: Descubra as Histórias</button> </section>
+        </div>
+
+        <div id="stories" class="section" style="display: none;">
+            <section class="stories">
+                <h2>Histórias que Conectam</h2>
+                <div class="story-carousel">
+                    <div class="story-item active">
+                        <h3>A Colheita que Alimenta a Cidade</h3>
+                        <img src="https://via.placeholder.com/600x300/607d8b/ffffff?text=Campo+e+Alimento" alt="Colheita no Campo">
+                        <p>Do campo, o trigo é colhido, transformado em farinha e chega às padarias da cidade, virando o pão quentinho da manhã. Uma verdadeira corrente de produção e sabor!</p>
+                    </div>
+                    <div class="story-item">
+                        <h3>A Inovação Urbana que Chega à Roça</h3>
+                        <img src="https://via.placeholder.com/600x300/4CAF50/ffffff?text=Tecnologia+no+Campo" alt="Tecnologia no Campo">
+                        <p>Drones, softwares de gestão e sementes geneticamente aprimoradas. Muitas das inovações desenvolvidas em centros urbanos transformam a vida e a produtividade dos agricultores no campo.</p>
+                    </div>
+                    <div class="story-item">
+                        <h3>O Artesanato Local Ganhando o Mundo</h3>
+                        <img src="https://via.placeholder.com/600x300/8bc34a/ffffff?text=Artesanato+Rural" alt="Artesanato Rural">
+                        <p>Peças únicas feitas à mão no interior do país, com técnicas passadas de geração em geração, encontram no mercado urbano e nas plataformas digitais a vitrine para alcançar consumidores em todo o mundo. A tradição encontra a modernidade!</p>
+                    </div>
+                    </div>
+                <div class="carousel-nav">
+                    <button class="nav-button prev" onclick="changeStory(-1)">&#10094;</button>
+                    <button class="nav-button next" onclick="changeStory(1)">&#10095;</button>
+                </div>
+                <button class="next-step-button" onclick="showSection('game')">Pronto para o Jogo?</button> </section>
+        </div>
+
+        <div id="game" class="section" style="display: none;">
+            <section class="game">
+                <h2>Responda as Perguntas e Ganhe Pontos!</h2>
+                <div id="question-container">
+                    <p id="question">Carregando...</p>
+                    <div id="options-container">
+                    </div>
+                </div>
+                <p id="score">Pontos: 0</p>
+            </section>
+        </div>
+    </main>
 
     <footer>
         <p>&copy; 2025 Conexão Cidade e Campo - Todos os direitos reservados.</p>
