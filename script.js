@@ -1,3 +1,11 @@
+// Global variables for the game
+let currentQuestionIndex = 0;
+let score = 0;
+
+// Global variables for stories carousel
+let currentStoryIndex = 0;
+let storyItems; // Will be initialized when DOM is ready
+
 // Lógica para navegação entre seções
 function showSection(sectionId) {
     // Esconde todas as seções
@@ -7,11 +15,27 @@ function showSection(sectionId) {
     });
 
     // Exibe a seção clicada
-    document.getElementById(sectionId).style.display = 'block';
+    const activeSection = document.getElementById(sectionId);
+    if (activeSection) {
+        activeSection.style.display = 'block';
+    }
 
-    // Se a seção do jogo for exibida, carrega a primeira pergunta
+    // Lógica específica para cada seção
     if (sectionId === 'game') {
-        loadQuestion();
+        // Only load question if starting a new game or if coming back to game after restarting
+        if (currentQuestionIndex === 0 && document.getElementById('question').textContent === 'Carregando...') {
+            loadQuestion();
+        } else if (currentQuestionIndex < questions.length) {
+            // If the game was in progress, ensure the current question is shown
+            loadQuestion();
+        }
+    } else if (sectionId === 'stories') {
+        // Initialize story items and show the first one when entering stories section
+        storyItems = document.querySelectorAll('.story-item');
+        if (storyItems.length > 0) {
+            currentStoryIndex = 0; // Always start from the first story
+            showStory(currentStoryIndex);
+        }
     }
 }
 
@@ -38,22 +62,13 @@ function saveProfile(event) {
 
     // Exibe nome e foto no perfil
     const reader = new FileReader();
-    
+
     reader.onload = function(e) {
         profileOutput.innerHTML = `
             <h3>Perfil Salvo:</h3>
             <img src="${e.target.result}" alt="Foto de perfil" class="profile-img">
             <p>Nome: <strong>${nome}</strong></p>
         `;
-        // Adiciona um estilo básico para a imagem de perfil (pode ser movido para o CSS)
-        const profileImg = profileOutput.querySelector('.profile-img');
-        if (profileImg) {
-            profileImg.style.width = '100px';
-            profileImg.style.height = '100px';
-            profileImg.style.borderRadius = '50%'; // Para deixá-la redonda
-            profileImg.style.objectFit = 'cover'; // Para preencher a área sem distorcer
-            profileImg.style.marginBottom = '10px';
-        }
     };
 
     if (foto) {
@@ -61,7 +76,7 @@ function saveProfile(event) {
     }
 
     // Salva o nome no LocalStorage para persistência
-    localStorage.setItem('nomeUsuario', nome); // Use uma chave mais específica
+    localStorage.setItem('nomeUsuario', nome);
 }
 
 // Lógica do Jogo de Perguntas
@@ -85,54 +100,83 @@ const questions = [
         question: "Qual a principal atividade econômica do campo que fornece matéria-prima para a indústria têxtil?",
         options: ["Pecuária", "Cafeicultura", "Cotonicultura", "Apicultura"],
         correct: 2 // Índice da opção correta (Cotonicultura)
+    },
+    // --- Novas Perguntas com Contexto de Cidade e Campo ---
+    {
+        question: "Pense na conexão: Qual transporte é fundamental para levar produtos agrícolas do campo para as grandes cidades e centros de distribuição?",
+        story: "Do interior do país para a sua mesa, a logística é um desafio. Qual meio de transporte é o mais utilizado para essa tarefa crucial?",
+        options: ["Avião", "Trem", "Caminhão", "Navio"],
+        correct: 2 // Caminhão
+    },
+    {
+        question: "A energia que ilumina as cidades e impulsiona indústrias muitas vezes vem de fontes rurais. Qual a principal fonte de energia renovável no Brasil, frequentemente gerada em grandes represas no campo?",
+        story: "As luzes da cidade dependem de uma infraestrutura que se estende por todo o território. Qual o pilar da nossa matriz energética limpa?",
+        options: ["Energia Solar", "Energia Eólica", "Energia Hidrelétrica", "Biomassa"],
+        correct: 2 // Energia Hidrelétrica
+    },
+    {
+        question: "Na cidade, o descarte adequado é essencial. Qual é a prática rural que, ao invés de descartar, transforma resíduos orgânicos da agropecuária em fertilizante natural para o solo?",
+        story: "Ciclos sustentáveis são a chave para o futuro. No campo, o que fazemos com o que sobra para enriquecer a terra?",
+        options: ["Aterro sanitário", "Compostagem", "Incineração", "Reciclagem de plásticos"],
+        correct: 1 // Compostagem
+    },
+    {
+        question: "Muitos jovens do campo se mudam para a cidade em busca de oportunidades. Qual é o termo para esse movimento populacional do campo para a cidade?",
+        story: "É um fenômeno global que molda a demografia das nações. Como chamamos essa grande migração interna?",
+        options: ["Êxodo Urbano", "Migração Sazonal", "Êxodo Rural", "Migração Pendular"],
+        correct: 2 // Êxodo Rural
+    },
+    {
+        question: "Para que o campo possa se modernizar e produzir mais eficientemente, qual tipo de tecnologia desenvolvida em centros urbanos é crucial para otimizar plantio, colheita e gestão de rebanhos?",
+        story: "A tecnologia da informação e comunicação (TIC) tem revolucionado o agronegócio. Qual área tecnológica é vital para a 'Agricultura 4.0'?",
+        options: ["Engenharia Civil", "Inteligência Artificial e Drones", "Design Gráfico", "Produção de Moda"],
+        correct: 1 // Inteligência Artificial e Drones
     }
-    // Adicione mais perguntas aqui!
 ];
 
-let score = 0;
-let currentQuestionIndex = 0;
+// Get references to game elements (updated to use 'let' as they might be reassigned)
+let questionElement = document.getElementById('question');
+let optionsContainer = document.getElementById('options-container');
+let scoreElement = document.getElementById('score');
 
 function loadQuestion() {
-    // Garante que o jogo não tente carregar perguntas se não houver mais
     if (currentQuestionIndex >= questions.length) {
         endGame();
         return;
     }
 
-    const question = questions[currentQuestionIndex];
-    const questionText = document.getElementById('question');
-    const optionsContainer = document.getElementById('options-container');
-    const scoreDisplay = document.getElementById('score');
-    
-    questionText.textContent = question.question;
-    optionsContainer.innerHTML = ''; // Limpa as opções anteriores
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
 
-    question.options.forEach((option, index) => {
+    optionsContainer.innerHTML = ''; // Clear previous options
+
+    currentQuestion.options.forEach((option, index) => {
         const button = document.createElement('button');
         button.textContent = option;
-        button.classList.add('option-button'); // Adiciona uma classe para estilização (opcional)
+        button.classList.add('option-button');
         button.onclick = () => checkAnswer(index);
         optionsContainer.appendChild(button);
     });
 
-    scoreDisplay.textContent = `Pontos: ${score}`;
+    scoreElement.textContent = `Pontos: ${score}`;
 }
 
 function checkAnswer(selectedIndex) {
-    const correctIndex = questions[currentQuestionIndex].correct;
-    
-    if (selectedIndex === correctIndex) {
-        score += 10;
+    const currentQuestion = questions[currentQuestionIndex];
+
+    if (selectedIndex === currentQuestion.correct) {
+        score += 10; // Add points for correct answer
+        alert('Correto!');
     } else {
-        score -= 5;
+        alert('Errado! A resposta correta era: ' + currentQuestion.options[currentQuestion.correct]);
     }
 
-    currentQuestionIndex++; // Avança para a próxima pergunta
+    currentQuestionIndex++; // Advance to the next question
 
     if (currentQuestionIndex < questions.length) {
-        loadQuestion(); // Carrega a próxima pergunta
+        loadQuestion(); // Load the next question
     } else {
-        endGame(); // Todas as perguntas foram respondidas
+        endGame(); // All questions have been answered
     }
 }
 
@@ -145,33 +189,71 @@ function endGame() {
         <button onclick="restartGame()">Jogar Novamente</button>
         <button onclick="showSection('home')">Voltar ao Início</button>
     `;
-    // Opcional: Salvar a pontuação final no localStorage
-    // localStorage.setItem('pontuacaoFinal', score);
+    localStorage.setItem('pontuacaoFinal', score);
 }
 
 function restartGame() {
-    score = 0;
     currentQuestionIndex = 0;
-    document.getElementById('game').innerHTML = `
+    score = 0;
+    const gameSection = document.getElementById('game');
+    gameSection.innerHTML = `
         <h2>Responda as Perguntas e Ganhe Pontos!</h2>
         <div id="question-container">
             <p id="question">Carregando...</p>
-            <div id="options-container">
-                </div>
+            <div id="options-container"></div>
         </div>
         <p id="score">Pontos: 0</p>
     `;
-    loadQuestion(); // Inicia o jogo novamente
+    // Re-assign the elements after recreating the HTML to ensure correct references
+    questionElement = document.getElementById('question');
+    optionsContainer = document.getElementById('options-container');
+    scoreElement = document.getElementById('score');
+
+    loadQuestion(); // Start the game again
 }
+
+// Lógica do Carrossel de Histórias
+function showStory(index) {
+    // Hide all stories
+    storyItems.forEach((item, i) => {
+        item.style.display = 'none';
+        item.classList.remove('active');
+        item.style.animation = 'none'; // Reset animation
+    });
+
+    // Show the active story
+    if (storyItems[index]) {
+        storyItems[index].style.display = 'block';
+        storyItems[index].classList.add('active');
+        storyItems[index].style.animation = 'slideIn 0.8s ease-out forwards'; // Apply animation
+    }
+}
+
+function changeStory(direction) {
+    currentStoryIndex += direction;
+
+    if (currentStoryIndex < 0) {
+        currentStoryIndex = storyItems.length - 1; // Loop to last story
+    } else if (currentStoryIndex >= storyItems.length) {
+        currentStoryIndex = 0; // Loop to first story
+    }
+    showStory(currentStoryIndex);
+}
+
 
 // Inicialização: Exibe a seção 'home' quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
     showSection('home');
+
     // Opcional: Carregar o nome do usuário se já estiver salvo
-    const savedName = localStorage.getItem('nomeUsuario');
-    if (savedName) {
-        document.getElementById('nome').value = savedName;
-        // Se quiser exibir o perfil salvo automaticamente, chame saveProfile ou uma função similar
-        // Note: A foto não é persistida facilmente no localStorage.
+    const savedNome = localStorage.getItem('nomeUsuario');
+    if (savedNome) {
+        document.getElementById('nome').value = savedNome;
+        const profileOutput = document.getElementById('profile-output');
+        profileOutput.innerHTML = `
+            <h3>Perfil Salvo:</h3>
+            <p>Nome: <strong>${savedNome}</strong></p>
+            <p>Selecione uma nova foto para atualizar.</p>
+        `;
     }
 });
