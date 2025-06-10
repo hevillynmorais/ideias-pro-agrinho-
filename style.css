@@ -89,7 +89,6 @@ nav ul li a:hover::after {
 
 /* Seções */
 .section {
-    display: none; /* Esconde todas as seções por padrão */
     padding: 50px; /* Increased padding for sections */
     margin-bottom: 40px; /* Increased spacing between sections */
     background-color: #161b22; /* Fundo ligeiramente mais claro que o body */
@@ -99,9 +98,9 @@ nav ul li a:hover::after {
     border: 1px solid rgba(76, 175, 80, 0.3); /* Subtle border for sections */
 }
 
-#home {
-    display: block; /* A seção home é exibida por padrão */
-}
+/* Em React, o 'display: none' é gerenciado pelo estado, não por CSS direto no ID */
+/* #home { display: block; } */
+
 
 .intro {
     background-image: url('https://via.placeholder.com/1400x700/1f4037/e0f2f1?text=Conexao+Cidade+e+Campo'); /* Larger placeholder */
@@ -132,7 +131,7 @@ nav ul li a:hover::after {
     position: relative;
     z-index: 2; /* Garante que o conteúdo fique acima do overlay */
     max-width: 900px; /* Wider content area */
-    padding: 3.5rem; /* Increased padding */
+    padding: 3.5rem;
     border-radius: 15px;
     background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background for content */
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Stronger shadow */
@@ -283,6 +282,8 @@ button:active { /* Efeito de clique */
 }
 
 .input-field input[type="text"],
+.input-field input[type="email"], /* Added email type */
+.input-field textarea, /* Added textarea */
 .input-field input[type="file"] {
     padding: 1.2rem; /* More padding for inputs */
     font-size: 1.1rem; /* Larger font in inputs */
@@ -290,9 +291,12 @@ button:active { /* Efeito de clique */
     background-color: #0d1117;
     color: #e6edf3;
     border-radius: 8px; /* More rounded input fields */
+    width: 100%; /* Ensure they take full width */
 }
 
 .input-field input[type="text"]:focus,
+.input-field input[type="email"]:focus,
+.input-field textarea:focus,
 .input-field input[type="file"]:focus {
     border-color: #a7d9b9;
     outline: none; /* Remove default outline */
@@ -330,6 +334,31 @@ button:active { /* Efeito de clique */
     background: #00796b;
 }
 
+.privacy-consent {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.privacy-consent input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.privacy-consent label {
+    font-size: 1rem;
+    color: #c9d1d9;
+    font-weight: normal;
+}
+.privacy-consent label a {
+    color: #a7d9b9;
+    text-decoration: underline;
+}
+.privacy-consent label a:hover {
+    color: #e0f2f1;
+}
+
+
 #profile-output {
     margin-top: 2.5rem; /* Ensure consistent spacing */
     padding: 2.5rem; /* More internal padding */
@@ -339,25 +368,33 @@ button:active { /* Efeito de clique */
     border: 1px solid #4a5666; /* Subtle border */
     width: 100%; /* Ensure it takes full width within its container */
     max-width: 500px; /* Match form max-width */
+    text-align: left; /* Align text within output */
 }
 
 #profile-output h3 {
     font-size: 2.2rem; /* Larger output heading */
     color: #e0f2f1;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
 }
 
 .profile-img {
     width: 150px; /* Larger profile image */
     height: 150px;
+    border-radius: 50%; /* Make it round */
+    object-fit: cover; /* Ensure image covers the area */
     border: 5px solid #4CAF50; /* Thicker border */
     box-shadow: 0 0 20px rgba(76, 175, 80, 0.7); /* Stronger glow */
     margin-bottom: 1.5rem; /* More space below image */
+    display: block; /* Center image */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #profile-output p {
     font-size: 1.3rem; /* Larger text for profile info */
     color: #c9d1d9;
+    margin-bottom: 0.8rem;
 }
 
 
@@ -391,7 +428,7 @@ button:active { /* Efeito de clique */
 
 .story-item {
     display: none; /* Hidden by default, JS will show active one */
-    animation: slideIn 0.8s ease-out forwards; /* Animation for story transition */
+    animation: fadeIn 0.8s ease-out forwards; /* Use fadeIn for better transition with React state */
     text-align: center;
 }
 
@@ -643,6 +680,8 @@ footer p {
         font-size: 1.1rem;
     }
     .input-field input[type="text"],
+    .input-field input[type="email"],
+    .input-field textarea,
     .input-field input[type="file"] {
         padding: 1rem;
         font-size: 1rem;
