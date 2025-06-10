@@ -6,77 +6,77 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
-    background-color: #0d1117; /* Cor de fundo escura, um pouco mais suave que puro preto */
-    color: #e6edf3; /* Cor do texto branco acincentado para melhor contraste */
-    line-height: 1.6; /* Melhor espaçamento entre linhas */
+    font-family: 'Poppins', sans-serif;
+    background-color: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o body ocupe a altura total da viewport */
-    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Container principal para centralizar o conteúdo */
 main {
-    flex-grow: 1; /* Permite que o main ocupe o espaço restante */
-    max-width: 1400px; /* Increased max-width for more space */
-    margin: 0 auto; /* Centraliza o main */
-    padding: 20px; /* Espaçamento interno */
-    width: 100%; /* Ocupa 100% da largura disponível dentro do max-width */
+    flex-grow: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
 }
 
 /* Cabeçalho */
 header {
-    background: linear-gradient(90deg, #1f4037, #99a25b); /* Gradiente mais vibrante */
+    background: linear-gradient(90deg, #1f4037, #99a25b);
     color: #ffffff;
-    padding: 1.5rem 0; /* Mais padding */
+    padding: 1.5rem 0;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-    position: sticky; /* Cabeçalho fixo no topo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
-    border-bottom: 3px solid #4CAF50; /* Add a subtle green line */
+    z-index: 1000;
+    border-bottom: 3px solid #4CAF50;
 }
 
 header .logo h1 {
-    font-size: 3.2rem; /* Tamanho da fonte maior */
+    font-size: 3.2rem;
     margin-bottom: 0.5rem;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra mais forte no texto do logo */
-    letter-spacing: 1px; /* Subtle letter spacing */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
 }
 
 nav ul {
     list-style-type: none;
     margin-top: 1rem;
-    padding: 0; /* Garante que não haja padding padrão */
+    padding: 0;
 }
 
 nav ul li {
-    display: inline-block; /* Altera para inline-block para melhor controle de margem */
-    margin: 0 25px; /* Margem maior entre os itens de navegação */
-    position: relative; /* Para o efeito de sublinhado */
+    display: inline-block;
+    margin: 0 25px;
+    position: relative;
 }
 
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1.3rem; /* Fonte um pouco maior */
-    font-weight: 500; /* Peso da fonte */
+    font-size: 1.3rem;
+    font-weight: 500;
     transition: color 0.3s ease, transform 0.3s ease;
-    padding-bottom: 8px; /* Mais espaço para o sublinhado */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for nav links */
+    padding-bottom: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 nav ul li a:hover {
-    color: #e0f2f1; /* Cor mais clara no hover */
-    transform: translateY(-3px); /* Pequeno efeito de elevação */
+    color: #e0f2f1;
+    transform: translateY(-3px);
 }
 
-nav ul li a::after { /* Efeito de sublinhado */
+nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 3px; /* Thicker underline */
+    height: 3px;
     background: #e0f2f1;
     left: 0;
     bottom: 0;
@@ -89,100 +89,231 @@ nav ul li a:hover::after {
 
 /* Seções */
 .section {
-    padding: 50px; /* Increased padding for sections */
-    margin-bottom: 40px; /* Increased spacing between sections */
-    background-color: #161b22; /* Fundo ligeiramente mais claro que o body */
-    border-radius: 15px; /* More rounded corners */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-    animation: fadeIn 0.8s ease-out; /* Animação ao mostrar a seção */
-    border: 1px solid rgba(76, 175, 80, 0.3); /* Subtle border for sections */
+    padding: 50px;
+    margin-bottom: 40px;
+    background-color: #161b22;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.8s ease-out;
+    border: 1px solid rgba(76, 175, 80, 0.3);
 }
-
-/* Em React, o 'display: none' é gerenciado pelo estado, não por CSS direto no ID */
-/* #home { display: block; } */
 
 
 .intro {
-    background-image: url('https://via.placeholder.com/1400x700/1f4037/e0f2f1?text=Conexao+Cidade+e+Campo'); /* Larger placeholder */
+    background-image: url('https://via.placeholder.com/1400x700/1f4037/e0f2f1?text=Conexao+Cidade+e+Campo');
     background-size: cover;
     background-position: center;
-    min-height: 600px; /* Increased min-height */
+    min-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
     overflow: hidden;
-    padding: 8rem 3rem; /* Increased padding */
+    padding: 8rem 3rem;
 }
 
-.intro::before { /* Overlay para melhorar a legibilidade do texto */
+.intro::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
+    background: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
 .intro-content {
     position: relative;
-    z-index: 2; /* Garante que o conteúdo fique acima do overlay */
-    max-width: 900px; /* Wider content area */
+    z-index: 2;
+    max-width: 900px;
     padding: 3.5rem;
     border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background for content */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6); /* Stronger shadow */
-    border: 1px solid rgba(167, 217, 185, 0.3); /* Subtle border */
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(167, 217, 185, 0.3);
 }
 
+/* --- Novos estilos para a Página Inicial (HomeSection) --- */
+
+.intro-content h2.animated-heading {
+    font-size: 4rem;
+    color: #e0f2f1;
+    animation: fadeInScale 1.5s ease-out;
+    text-shadow: 0 0 25px rgba(224, 242, 241, 0.5);
+    margin-bottom: 1rem;
+}
+
+.intro-tagline {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #a7d9b9;
+    margin-bottom: 2.5rem;
+    animation: slideInUp 1.2s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.intro-description {
+    font-size: 1.25rem;
+    color: #c9d1d9;
+    max-width: 700px;
+    margin: 0 auto 3.5rem auto;
+    animation: fadeIn 1.5s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+/* Visual da Conexão */
+.connection-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 4rem 0;
+    position: relative;
+    padding: 2rem;
+    background: rgba(34, 44, 56, 0.7);
+    border-radius: 15px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(167, 217, 185, 0.3);
+    animation: fadeIn 1.5s ease-out 0.8s forwards;
+    opacity: 0;
+}
+
+.city-side, .field-side {
+    text-align: center;
+    padding: 1.5rem;
+    flex: 1;
+    max-width: 250px;
+}
+
+.visual-icon {
+    font-size: 5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    color: #4CAF50;
+    text-shadow: 0 0 25px rgba(76, 175, 80, 0.8);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.city-side .visual-icon { animation-delay: 0s; }
+.field-side .visual-icon { animation-delay: 1s; }
+
+
+.city-side h3, .field-side h3 {
+    font-size: 1.8rem;
+    color: #e6edf3;
+    margin-bottom: 0.5rem;
+}
+
+.city-side p, .field-side p {
+    font-size: 1rem;
+    color: #c9d1d9;
+}
+
+.connecting-line {
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #4CAF50, #009688);
+    border-radius: 5px;
+    animation: drawLine 2s ease-out 1s forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+/* Animações adicionais */
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes drawLine {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
+/* Estilo do botão de "Começar Jornada!" */
+.start-journey-button {
+    background-color: #00bcd4;
+    font-size: 1.6rem;
+    padding: 1.8rem 3.5rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
+    transition: all 0.4s ease;
+    border: 3px solid #00acc1;
+    margin-top: 4rem;
+}
+
+.start-journey-button:hover {
+    background-color: #00acc1;
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 188, 212, 0.6);
+}
+
+.start-journey-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+}
+
+/* --- Fim dos novos estilos para a Página Inicial --- */
+
+
 .intro-content h2 {
-    font-size: 3.5rem; /* Larger heading */
+    font-size: 3.5rem;
     margin-bottom: 1.8rem;
-    color: #a7d9b9; /* Cor de destaque */
+    color: #a7d9b9;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .intro-content p {
-    font-size: 1.5rem; /* Slightly larger text for impact */
-    margin-bottom: 3rem; /* More space before features */
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
     color: #e6edf3;
 }
 
 .intro-features {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Space between feature items */
-    margin-top: 3.5rem; /* Space from the main intro text */
-    margin-bottom: 3.5rem; /* Space before the button */
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 30px;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
 }
 
 .feature-item {
-    background-color: rgba(22, 27, 34, 0.95); /* Slightly more opaque dark background */
-    padding: 2.5rem; /* More padding */
-    border-radius: 15px; /* More rounded */
-    width: 300px; /* Slightly larger fixed width */
+    background-color: rgba(22, 27, 34, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 300px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
-    border: 1px solid #1f4037; /* Subtle border */
+    border: 1px solid #1f4037;
 }
 
 .feature-item:hover {
-    transform: translateY(-12px) scale(1.03); /* Lift and slightly enlarge on hover */
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
-    background-color: rgba(34, 44, 56, 0.98); /* Slightly lighter on hover */
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+    background-color: rgba(34, 44, 56, 0.98);
 }
 
 .feature-item .icon {
-    font-size: 4.5rem; /* Larger icon size */
+    font-size: 4.5rem;
     margin-bottom: 1.2rem;
     display: block;
-    color: #a7d9b9; /* Highlight color for icons */
-    text-shadow: 0 0 20px rgba(167, 217, 185, 0.7); /* Stronger glow effect for icons */
+    color: #a7d9b9;
+    text-shadow: 0 0 20px rgba(167, 217, 185, 0.7);
 }
 
 .feature-item h3 {
@@ -201,35 +332,35 @@ nav ul li a:hover::after {
 
 /* Estilos de Botão Geral */
 button {
-    background-color: #4CAF50; /* Verde vibrante */
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 1.4rem 2.8rem; /* More padding */
-    font-size: 1.4rem; /* Larger font */
+    padding: 1.4rem 2.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 10px; /* More rounded corners */
+    border-radius: 10px;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    letter-spacing: 0.8px; /* Increased letter spacing */
-    text-transform: uppercase; /* Texto em maiúsculas */
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
     background-color: #45a049;
-    transform: translateY(-4px); /* Increased "levitation" effect */
+    transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-button:active { /* Efeito de clique */
+button:active {
     transform: translateY(0);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Novo botão para navegação sequencial */
 .next-step-button {
-    background-color: #009688; /* Another vibrant color for distinction */
-    margin-top: 3rem; /* Space from content above */
+    background-color: #009688;
+    margin-top: 3rem;
     padding: 1.2rem 2.5rem;
     font-size: 1.2rem;
     border-radius: 8px;
@@ -245,53 +376,53 @@ button:active { /* Efeito de clique */
 
 /* Seção de Perfil */
 .profile {
-    background: linear-gradient(135deg, #1f4037, #0d1117); /* Gentle gradient background */
-    border: 1px solid #4CAF50; /* Add a subtle border */
-    padding: 4rem 3rem; /* More generous padding */
+    background: linear-gradient(135deg, #1f4037, #0d1117);
+    border: 1px solid #4CAF50;
+    padding: 4rem 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.5rem; /* Space between form and output */
-    border-radius: 15px; /* Keep consistent with sections */
+    gap: 2.5rem;
+    border-radius: 15px;
 }
 
 .profile h2 {
-    font-size: 3rem; /* Larger heading */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Shadow for heading */
-    color: #e0f2f1; /* Lighter color for heading */
+    font-size: 3rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    color: #e0f2f1;
 }
 
 .profile-form {
-    background-color: #222c38; /* Keep existing background */
-    padding: 3rem; /* More padding inside the form */
-    border-radius: 15px; /* More rounded corners */
-    border: 1px solid #4a5666; /* Border for form */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Stronger outer shadow */
+    background-color: #222c38;
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid #4a5666;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .input-field {
-    position: relative; /* For potential future icon/feedback */
-    margin-bottom: 2rem; /* More space between fields */
+    position: relative;
+    margin-bottom: 2rem;
 }
 
 .input-field label {
-    font-size: 1.2rem; /* Larger label font */
-    font-weight: 600; /* Bolder labels */
+    font-size: 1.2rem;
+    font-weight: 600;
     color: #c9d1d9;
-    margin-bottom: 0.8rem; /* More space below label */
+    margin-bottom: 0.8rem;
 }
 
 .input-field input[type="text"],
-.input-field input[type="email"], /* Added email type */
-.input-field textarea, /* Added textarea */
+.input-field input[type="email"],
+.input-field textarea,
 .input-field input[type="file"] {
-    padding: 1.2rem; /* More padding for inputs */
-    font-size: 1.1rem; /* Larger font in inputs */
-    border: 2px solid #4a5666; /* Thicker border */
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: 2px solid #4a5666;
     background-color: #0d1117;
     color: #e6edf3;
-    border-radius: 8px; /* More rounded input fields */
-    width: 100%; /* Ensure they take full width */
+    border-radius: 8px;
+    width: 100%;
 }
 
 .input-field input[type="text"]:focus,
@@ -299,11 +430,10 @@ button:active { /* Efeito de clique */
 .input-field textarea:focus,
 .input-field input[type="file"]:focus {
     border-color: #a7d9b9;
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 0 4px rgba(167, 217, 185, 0.4); /* Larger glow */
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(167, 217, 185, 0.4);
 }
 
-/* Custom file input button styling adjustments */
 .input-field input[type="file"] {
     cursor: pointer;
 }
@@ -316,8 +446,8 @@ button:active { /* Efeito de clique */
     background: #009688;
     color: #fff;
     border: 1px solid #00796b;
-    border-radius: 6px; /* Slightly more rounded */
-    padding: 1rem 1.5rem; /* More padding */
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none;
@@ -325,8 +455,8 @@ button:active { /* Efeito de clique */
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
-    font-weight: bold; /* Bolder text */
-    font-size: 11pt; /* Slightly larger font */
+    font-weight: bold;
+    font-size: 11pt;
     letter-spacing: 0.5px;
     transition: background-color 0.3s ease;
 }
@@ -360,39 +490,39 @@ button:active { /* Efeito de clique */
 
 
 #profile-output {
-    margin-top: 2.5rem; /* Ensure consistent spacing */
-    padding: 2.5rem; /* More internal padding */
-    background: linear-gradient(45deg, #161b22, #222c38); /* Subtle gradient for output */
-    border-radius: 15px; /* More rounded corners */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow */
-    border: 1px solid #4a5666; /* Subtle border */
-    width: 100%; /* Ensure it takes full width within its container */
-    max-width: 500px; /* Match form max-width */
-    text-align: left; /* Align text within output */
+    margin-top: 2.5rem;
+    padding: 2.5rem;
+    background: linear-gradient(45deg, #161b22, #222c38);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid #4a5666;
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
 }
 
 #profile-output h3 {
-    font-size: 2.2rem; /* Larger output heading */
+    font-size: 2.2rem;
     color: #e0f2f1;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     margin-bottom: 1.5rem;
 }
 
 .profile-img {
-    width: 150px; /* Larger profile image */
+    width: 150px;
     height: 150px;
-    border-radius: 50%; /* Make it round */
-    object-fit: cover; /* Ensure image covers the area */
-    border: 5px solid #4CAF50; /* Thicker border */
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.7); /* Stronger glow */
-    margin-bottom: 1.5rem; /* More space below image */
-    display: block; /* Center image */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #4CAF50;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.7);
+    margin-bottom: 1.5rem;
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 #profile-output p {
-    font-size: 1.3rem; /* Larger text for profile info */
+    font-size: 1.3rem;
     color: #c9d1d9;
     margin-bottom: 0.8rem;
 }
@@ -401,9 +531,9 @@ button:active { /* Efeito de clique */
 /* NEW SECTION: Stories */
 .stories {
     text-align: center;
-    padding: 4rem; /* More padding */
-    background: linear-gradient(45deg, #0d1117, #1f4037); /* Gradient background */
-    border: 1px solid #a7d9b9; /* Border with highlight color */
+    padding: 4rem;
+    background: linear-gradient(45deg, #0d1117, #1f4037);
+    border: 1px solid #a7d9b9;
 }
 
 .stories h2 {
@@ -415,25 +545,25 @@ button:active { /* Efeito de clique */
 
 .story-carousel {
     position: relative;
-    overflow: hidden; /* Hide overflowing stories */
+    overflow: hidden;
     width: 90%;
     max-width: 800px;
-    margin: 0 auto 2.5rem auto; /* Center with space below */
+    margin: 0 auto 2.5rem auto;
     border-radius: 15px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     background-color: #222c38;
-    padding: 2.5rem; /* Inner padding */
-    border: 1px solid rgba(74, 86, 102, 0.5); /* Subtle border */
+    padding: 2.5rem;
+    border: 1px solid rgba(74, 86, 102, 0.5);
 }
 
 .story-item {
-    display: none; /* Hidden by default, JS will show active one */
-    animation: fadeIn 0.8s ease-out forwards; /* Use fadeIn for better transition with React state */
+    display: none;
+    animation: fadeIn 0.8s ease-out forwards;
     text-align: center;
 }
 
 .story-item.active {
-    display: block; /* Show the active story */
+    display: block;
 }
 
 .story-item h3 {
@@ -449,7 +579,7 @@ button:active { /* Efeito de clique */
     border-radius: 10px;
     margin-bottom: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid #009688; /* Green border for images */
+    border: 2px solid #009688;
 }
 
 .story-item p {
@@ -466,13 +596,13 @@ button:active { /* Efeito de clique */
 }
 
 .carousel-nav .nav-button {
-    background-color: #607d8b; /* Grayish blue for nav buttons */
+    background-color: #607d8b;
     color: white;
     padding: 0.8rem 1.2rem;
     font-size: 1.5rem;
-    border-radius: 50%; /* Round buttons */
-    width: 60px; /* Fixed width for roundness */
-    height: 60px; /* Fixed height for roundness */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -490,93 +620,93 @@ button:active { /* Efeito de clique */
 /* Seção do Jogo */
 .game {
     text-align: center;
-    padding: 4rem; /* More padding */
+    padding: 4rem;
 }
 
 .game h2 {
-    font-size: 3rem; /* Larger heading */
+    font-size: 3rem;
     margin-bottom: 2.5rem;
     color: #a7d9b9;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 #question-container {
-    padding: 3rem; /* More padding */
+    padding: 3rem;
     margin-bottom: 2.5rem;
     background-color: #222c38;
-    border-radius: 15px; /* More rounded */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(74, 86, 102, 0.5);
 }
 
 #question {
-    font-size: 2rem; /* Larger question font */
+    font-size: 2rem;
     margin-bottom: 2.5rem;
     color: #e6edf3;
-    min-height: 90px; /* Ensure space for the question */
+    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-weight: 500; /* Slightly bolder */
+    font-weight: 500;
 }
 
 #options-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que os botões quebrem a linha */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Increased spacing between buttons */
+    gap: 20px;
 }
 
 #options-container button {
-    background-color: #009688; /* Verde-água */
+    background-color: #009688;
     color: white;
-    padding: 1.4rem 2.2rem; /* More padding */
-    margin: 0; /* Remove a margem individual para usar o gap */
-    border-radius: 10px; /* More rounded */
-    flex: 1 1 calc(50% - 40px); /* Adjust flex basis for increased gap */
-    max-width: 350px; /* Increased max-width for buttons */
+    padding: 1.4rem 2.2rem;
+    margin: 0;
+    border-radius: 10px;
+    flex: 1 1 calc(50% - 40px);
+    max-width: 350px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-    font-size: 1.2rem; /* Slightly larger font */
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
 #options-container button:hover {
     background-color: #00796b;
-    transform: translateY(-3px); /* Increased lift */
+    transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 #score {
-    font-size: 2rem; /* Larger score font */
+    font-size: 2rem;
     font-weight: bold;
     color: #a7d9b9;
     margin-top: 2.5rem;
-    padding: 1.2rem 2rem; /* More padding */
+    padding: 1.2rem 2rem;
     background-color: #1f4037;
-    border-radius: 10px; /* More rounded */
+    border-radius: 10px;
     display: inline-block;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Rodapé */
 footer {
     background-color: #161b22;
     color: #c9d1d9;
-    padding: 1.8rem; /* More padding */
+    padding: 1.8rem;
     text-align: center;
-    margin-top: auto; /* Empurra o rodapé para o final da página */
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-    border-top: 3px solid #4CAF50; /* Add a subtle green line */
+    margin-top: auto;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    border-top: 3px solid #4CAF50;
 }
 
 footer p {
-    font-size: 1rem; /* Slightly larger font */
+    font-size: 1rem;
 }
 
 /* Animações */
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(30px); } /* Stronger initial displacement */
+    0% { opacity: 0; transform: translateY(30px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
@@ -587,7 +717,7 @@ footer p {
 
 
 /* Responsividade */
-@media (max-width: 992px) { /* New breakpoint for larger tablets */
+@media (max-width: 992px) {
     main {
         padding: 15px;
     }
@@ -661,13 +791,13 @@ footer p {
     }
 
     .intro-features {
-        flex-direction: column; /* Stack features vertically on small screens */
+        flex-direction: column;
         align-items: center;
         gap: 20px;
     }
     .feature-item {
-        width: 90%; /* Occupy more width on smaller screens */
-        max-width: 350px; /* Prevent it from getting too wide */
+        width: 90%;
+        max-width: 350px;
     }
 
     .profile h2, .game h2, .stories h2 {
@@ -717,11 +847,42 @@ footer p {
         font-size: 1.6rem;
     }
     #options-container button {
-        flex: 1 1 100%; /* Buttons take full width on smaller phones */
-        max-width: 350px; /* Cap width for very narrow screens */
+        flex: 1 1 100%;
+        max-width: 350px;
     }
     #score {
         font-size: 1.8rem;
+    }
+
+    /* Media Queries para HomeSection */
+    .intro-content h2.animated-heading {
+        font-size: 2.8rem;
+    }
+    .intro-tagline {
+        font-size: 1.5rem;
+    }
+    .intro-description {
+        font-size: 1.1rem;
+    }
+    .connection-visual {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1.5rem;
+    }
+    .connecting-line {
+        width: 5px;
+        height: 60px;
+    }
+    .visual-icon {
+        font-size: 4rem;
+    }
+    .city-side h3, .field-side h3 {
+        font-size: 1.5rem;
+    }
+    .start-journey-button {
+        font-size: 1.3rem;
+        padding: 1.2rem 2.5rem;
+        border-radius: 40px;
     }
 }
 
@@ -775,5 +936,20 @@ footer p {
     }
     #score {
         font-size: 1.5rem;
+    }
+
+    /* Media Queries para HomeSection */
+    .intro-content h2.animated-heading {
+        font-size: 2.2rem;
+    }
+    .intro-tagline {
+        font-size: 1.2rem;
+    }
+    .intro-description {
+        font-size: 1rem;
+    }
+    .start-journey-button {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
     }
 }
