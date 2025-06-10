@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Funções de Navegação de Seções ---
-    const sections = document.querySelectorAll('.section');
-    const allSections = document.querySelectorAll('.section'); // Get all sections for display logic
+    const allSections = document.querySelectorAll('.section');
 
+    // Torna a função global para ser chamada pelo `onclick` no HTML
     window.showSection = (sectionId) => {
         allSections.forEach(section => {
             section.classList.remove('active');
-            section.style.display = 'none'; // Ensure all are hidden first
+            section.style.display = 'none'; // Esconde todas as seções
         });
         const targetSection = document.getElementById(sectionId);
         if (targetSection) {
             targetSection.classList.add('active');
-            targetSection.style.display = 'block'; // Show the active section
+            targetSection.style.display = 'block'; // Mostra a seção ativa
         }
     };
 
@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     };
 
+    // Torna a função global para ser chamada pelo `onclick` no HTML
     window.changeStory = (direction) => {
         currentStoryIndex += direction;
         if (currentStoryIndex < 0) {
@@ -154,56 +155,56 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             question: "Qual é o maior estado do Brasil em área?",
             options: ["São Paulo", "Amazonas", "Bahia", "Mato Grosso"],
-            correct: 1 // Índice da opção correta (Amazonas)
+            correct: 1
         },
         {
             question: "Qual cultura agrícola é a base da produção de etanol no Brasil?",
             options: ["Soja", "Milho", "Cana-de-açúcar", "Café"],
-            correct: 2 // Índice da opção correta (Cana-de-açúcar)
+            correct: 2
         },
         {
             question: "Qual é o nome do bioma brasileiro conhecido por sua grande biodiversidade e chuvas regulares, abrigando a maior floresta tropical do mundo?",
             options: ["Cerrado", "Caatinga", "Pantanal", "Amazônia"],
-            correct: 3 // Índice da opção correta (Amazônia)
+            correct: 3
         },
         {
             question: "Qual a principal atividade econômica do campo que fornece matéria-prima para a indústria têxtil?",
             options: ["Pecuária", "Cafeicultura", "Cotonicultura", "Apicultura"],
-            correct: 2 // Índice da opção correta (Cotonicultura)
+            correct: 2
         },
         {
             question: "Pense na conexão: Qual transporte é fundamental para levar produtos agrícolas do campo para as grandes cidades e centros de distribuição?",
             options: ["Avião", "Trem", "Caminhão", "Navio"],
-            correct: 2 // Caminhão
+            correct: 2
         },
         {
             question: "A energia que ilumina as cidades e impulsiona indústrias muitas vezes vem de fontes rurais. Qual a principal fonte de energia renovável no Brasil, frequentemente gerada em grandes represas no campo?",
             options: ["Energia Solar", "Energia Eólica", "Energia Hidrelétrica", "Biomassa"],
-            correct: 2 // Energia Hidrelétrica
+            correct: 2
         },
         {
             question: "Na cidade, o descarte adequado é essencial. Qual é a prática rural que, ao invés de descartar, transforma resíduos orgânicos da agropecuária em fertilizante natural para o solo?",
             options: ["Aterro sanitário", "Compostagem", "Incineração", "Reciclagem de plásticos"],
-            correct: 1 // Compostagem
+            correct: 1
         },
         {
             question: "Muitos jovens do campo se mudam para a cidade em busca de oportunidades. Qual é o termo para esse movimento populacional do campo para a cidade?",
             options: ["Êxodo Urbano", "Migração Sazonal", "Êxodo Rural", "Migração Pendular"],
-            correct: 2 // Êxodo Rural
+            correct: 2
         },
         {
             question: "Para que o campo possa se modernizar e produzir mais eficientemente, qual tipo de tecnologia desenvolvida em centros urbanos é crucial para otimizar plantio, colheita e gestão de rebanhos?",
             options: ["Engenharia Civil", "Inteligência Artificial e Drones", "Design Gráfico", "Produção de Moda"],
-            correct: 1 // Inteligência Artificial e Drones
+            correct: 1
         }
     ];
 
     let currentQuestionIndex = 0;
     let score = 0;
-    const questionElement = document.getElementById('question');
-    const optionsContainer = document.getElementById('options-container');
-    const scoreElement = document.getElementById('score');
-    const gameSection = document.getElementById('game'); // Referência à seção do jogo
+    let questionElement = document.getElementById('question'); // Use let para poder reatribuir
+    let optionsContainer = document.getElementById('options-container'); // Use let
+    let scoreElement = document.getElementById('score'); // Use let
+    const gameSection = document.getElementById('game');
 
     const loadQuestion = () => {
         if (currentQuestionIndex < questions.length) {
@@ -247,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     };
 
+    // Torna a função global para ser chamada pelo `onclick` no HTML
     window.restartGame = () => {
         currentQuestionIndex = 0;
         score = 0;
@@ -262,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p id="score">Pontos: 0</p>
             </section>
         `;
-        // Re-obter referências dos elementos que foram recriados
+        // Re-obter referências dos elementos que foram recriados pelo innerHTML
         questionElement = document.getElementById('question');
         optionsContainer = document.getElementById('options-container');
         scoreElement = document.getElementById('score');
